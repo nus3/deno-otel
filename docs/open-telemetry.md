@@ -108,3 +108,16 @@ https://opentelemetry.io/ja/docs/concepts/signals/logs/
 
 - ログ
 - 構造化、非構造化された任意のメタデータを含む、タイムスタンプ追記のテキストレコード
+
+https://opentelemetry.io/docs/collector/
+
+- コレクター
+- ベンダーに依存しない方法でテレメトリデータを受信、処理、エクスポートする
+- OTLP は OpenTelemetry Protocol
+  - テレメトリデータを送信するための標準プロトコル
+- コレクターをデプロイする方法は 3 パターン
+  - コレクターを使わず、バックエンドに直接テレメトリを送信する
+  - agent 形式
+    - コレクターにテレメトリを送信し、そこからバックエンドに送信する
+  - gateway
+    - 単一の OTLP エンドポイントに送信

@@ -64,3 +64,32 @@ docker run --name lgtm -p 3000:3000 -p 4317:4317 -p 4318:4318 --rm -ti \
   - 環境変数をつけたら良さそう
   - `service.name: If OTEL_SERVICE_NAME is not set, the value is set to <unknown_service>.`
   - https://docs.deno.com/runtime/fundamentals/open_telemetry/#deno.serve
+- Deno では一部のオブザーバビリティデータを自動的に収集し、OTLP エンドポイントにエクスポートする
+  - トレース
+    - Deno.serve で受信した HTTP リクエスト
+    - fetch で送信した HTTP リクエスト
+  - メトリクス
+    - Deno.serve
+      - http.server.request.duration
+        - 処理された HTTP リクエストの受信時間のヒストグラム
+      - http.server.active_requests
+        - 受信されたがまだ応答されていないリクエストの数
+      - http.server.request.body.size
+        - リクエスト本文のサイズ
+      - http.server.response.body.size
+        - レスポンス本文のサイズ
+  - ログ
+    - console.\*で作成されたログ
+    - Deno ランタイムによって作成されたログ
+    - Deno ランタイムの終了を引き起こすエラー
+- OpenTelemetry の integration は、`OTEL_DENO=true`
+- https://github.com/deno-otel
+  - Deno OpenTelemetry の org
+
+## TODO:
+
+以下の内容を調べてみる
+
+- telemetry.sdk.language: deno-rust"
+- telemetry.sdk.name: "deno-opentelemetry"
+- telemetry.sdk.version: "2.2.3-0.27.1"
