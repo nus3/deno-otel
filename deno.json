@@ -1,8 +1,9 @@
 {
   "tasks": {
-    "dev": "deno run --watch main.ts"
+    "dev": "OTEL_DENO=true OTEL_SERVICE_NAME=nus3-otel deno run --unstable-otel --allow-net server.ts"
   },
   "imports": {
+    "@opentelemetry/api": "npm:@opentelemetry/api@^1.9.0",
     "@std/assert": "jsr:@std/assert@1"
   }
 }
